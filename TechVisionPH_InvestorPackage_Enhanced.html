@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Vision PH — Investor Package</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --teal:#013440;--teal2:#028090;--mint:#00B4CC;--mint2:#05D6E8;
+  --amber:#F5A623;--amber2:#FF7B00;--white:#fff;
+  --light:#F0FAFB;--mid:#E4F4F7;--dark:#011F28;
+  --text:#1a2e35;--sub:#4a7a85;
+}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(1,52,64,.96);backdrop-filter:blur(10px);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{color:#fff;font-weight:800;font-size:16px;letter-spacing:-.3px;}
+.nav-logo span{color:var(--amber);}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:13px;font-weight:500;transition:.2s;}
+.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--amber);color:#fff;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;transition:.2s;}
+.nav-cta:hover{background:var(--amber2);color:#fff;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:linear-gradient(135deg,#011F28 0%,#013440 50%,#01505f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 40px 60px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 60%,rgba(0,180,204,.12) 0%,transparent 70%);}
+.hero-badge{display:inline-block;background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.4);color:var(--amber);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:24px;}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-1.5px;margin-bottom:8px;}
+.hero h1 span{color:var(--mint2);}
+.hero-sub{font-size:clamp(15px,2vw,20px);color:rgba(255,255,255,.65);max-width:580px;margin:16px auto 40px;line-height:1.6;}
+.hero-stats{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:48px;}
+.hstat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 22px;text-align:center;backdrop-filter:blur(4px);}
+.hstat .num{font-size:24px;font-weight:900;color:#fff;line-height:1;}
+.hstat .num span{color:var(--amber);}
+.hstat .lbl{font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;letter-spacing:.3px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:linear-gradient(135deg,var(--amber),var(--amber2));color:#fff;padding:14px 32px;border-radius:30px;font-size:15px;font-weight:700;text-decoration:none;transition:.25s;box-shadow:0 8px 24px rgba(245,166,35,.35);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(245,166,35,.45);}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;padding:14px 32px;border-radius:30px;font-size:15px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.2);transition:.25s;}
+.btn-ghost:hover{background:rgba(255,255,255,.14);}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.35);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.scroll-arrow{width:20px;height:20px;border-right:2px solid rgba(255,255,255,.3);border-bottom:2px solid rgba(255,255,255,.3);transform:rotate(45deg);animation:bounce 1.8s infinite;}
+@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(5px);}}
+
+/* ── SECTIONS ── */
+section{padding:80px 40px;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mint);margin-bottom:10px;}
+.section-title{font-size:clamp(26px,4vw,42px);font-weight:900;color:var(--teal);line-height:1.1;letter-spacing:-.5px;margin-bottom:14px;}
+.section-sub{font-size:16px;color:var(--sub);max-width:600px;line-height:1.7;margin-bottom:40px;}
+
+/* ── GAP SECTION ── */
+.gap-sec{background:var(--light);}
+.gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.gap-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.gstat{background:#fff;border-radius:14px;padding:20px;border-left:4px solid var(--amber);box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.gstat .big{font-size:32px;font-weight:900;color:var(--teal);}
+.gstat .desc{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.4;}
+.gap-visual{background:linear-gradient(135deg,var(--teal),var(--teal2));border-radius:20px;padding:32px;color:#fff;}
+.gap-visual h4{font-size:14px;font-weight:700;margin-bottom:16px;opacity:.7;letter-spacing:.5px;text-transform:uppercase;}
+.stack-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,.08);border-radius:10px;margin-bottom:8px;font-size:13px;}
+.stack-item .icon{font-size:18px;width:32px;text-align:center;}
+.stack-item .tool{font-weight:600;}
+.stack-item .gap{font-size:11px;color:rgba(255,255,255,.55);margin-left:auto;}
+.stack-result{margin-top:16px;padding:12px 16px;background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.4);border-radius:10px;font-size:13px;font-weight:600;color:var(--amber);}
+
+/* ── DEVICE SHOWCASE ── */
+.devices-sec{background:#fff;}
+.devices-row{display:flex;align-items:flex-end;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:48px;}
+
+/* PHONE */
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.phone-label{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;}
+.phone-device{width:190px;height:380px;background:linear-gradient(160deg,#1a1a2e,#2d2d4e);border-radius:36px;padding:10px;box-shadow:0 30px 70px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.15);position:relative;}
+.phone-notch{width:70px;height:20px;background:#1a1a2e;border-radius:0 0 14px 14px;position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:2;}
+.phone-screen{width:100%;height:100%;background:#f8fffe;border-radius:28px;overflow:hidden;position:relative;}
+
+/* TABLET */
+.tablet-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.tablet-label{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;}
+.tablet-device{width:440px;height:310px;background:linear-gradient(160deg,#1e1e2e,#2a2a3e);border-radius:18px;padding:12px;box-shadow:0 30px 70px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.12);position:relative;}
+.tablet-cam{width:8px;height:8px;background:#333;border-radius:50%;position:absolute;top:50%;left:6px;transform:translateY(-50%);}
+.tablet-screen{width:100%;height:100%;background:#fff;border-radius:8px;overflow:hidden;}
+
+/* LAPTOP */
+.laptop-wrap{display:flex;flex-direction:column;align-items:center;gap:0;}
+.laptop-label{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;}
+.laptop-lid{width:520px;height:320px;background:linear-gradient(160deg,#1a1a2e,#252535);border-radius:14px 14px 0 0;padding:12px 12px 6px;box-shadow:0 -4px 30px rgba(0,0,0,.2);position:relative;}
+.laptop-cam-dot{width:6px;height:6px;background:#444;border-radius:50%;position:absolute;top:6px;left:50%;transform:translateX(-50%);}
+.laptop-screen{width:100%;height:100%;background:#1e2a3a;border-radius:6px 6px 0 0;overflow:hidden;}
+.laptop-base{width:560px;height:20px;background:linear-gradient(180deg,#2a2a3a,#1a1a28);border-radius:0 0 10px 10px;box-shadow:0 8px 20px rgba(0,0,0,.3);}
+.laptop-base::after{content:'';display:block;width:100px;height:3px;background:rgba(255,255,255,.08);border-radius:2px;margin:8px auto 0;}
+
+/* ── PHONE UI: Sari-Sari Tracker — Modern ── */
+.sari-ui{height:100%;display:flex;flex-direction:column;background:#EEF2FF;font-family:-apple-system,sans-serif;overflow:hidden;}
+.ss-hdr{background:linear-gradient(155deg,#011F28 0%,#013440 55%,#025a70 100%);padding:26px 12px 14px;position:relative;overflow:hidden;}
+.ss-hdr::before{content:'';position:absolute;top:-28px;right:-18px;width:90px;height:90px;background:rgba(0,180,204,.18);border-radius:50%;}
+.ss-hdr::after{content:'';position:absolute;bottom:-18px;left:14px;width:55px;height:55px;background:rgba(245,166,35,.12);border-radius:50%;}
+.ss-top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;position:relative;z-index:1;}
+.ss-store-info .ss-label{font-size:8.5px;color:rgba(255,255,255,.45);font-weight:600;letter-spacing:.4px;text-transform:uppercase;}
+.ss-store-info .ss-name{font-size:13px;font-weight:800;color:#fff;margin-top:1px;}
+.ss-avatar{width:28px;height:28px;background:linear-gradient(135deg,#F5A623,#FF7B00);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;position:relative;}
+.ss-avatar::after{content:'';width:7px;height:7px;background:#4ade80;border-radius:50%;border:1.5px solid #013440;position:absolute;bottom:0;right:0;}
+.ss-card{background:rgba(255,255,255,.11);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 12px;position:relative;z-index:1;}
+.ss-card-row{display:flex;justify-content:space-between;align-items:flex-start;}
+.ss-c-label{font-size:8.5px;color:rgba(255,255,255,.45);font-weight:700;text-transform:uppercase;letter-spacing:.4px;}
+.ss-c-amount{font-size:21px;font-weight:900;color:#fff;line-height:1;margin-top:2px;}
+.ss-c-change{font-size:9px;color:#4ade80;font-weight:700;margin-top:3px;}
+.ss-mini-kpis{display:flex;flex-direction:column;align-items:flex-end;gap:3px;}
+.ss-kpi{font-size:9px;color:rgba(255,255,255,.45);text-align:right;}
+.ss-kpi b{color:rgba(255,255,255,.85);font-weight:700;}
+.ss-tabs{display:flex;background:#fff;padding:0 10px;border-bottom:1px solid #e0e7ff;}
+.ss-tab{flex:1;padding:8px 2px;font-size:10px;font-weight:600;color:#9ca3af;text-align:center;border-bottom:2px solid transparent;transition:.15s;}
+.ss-tab.active{color:#028090;border-bottom-color:#028090;}
+.ss-list{flex:1;overflow:hidden;padding:7px 8px;display:flex;flex-direction:column;gap:5px;}
+.ss-item{background:#fff;border-radius:10px;padding:7px 8px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(1,52,64,.08);border-left:3px solid #e5e7eb;}
+.ss-item.ok{border-left-color:#10b981;}.ss-item.low{border-left-color:#f59e0b;}.ss-item.out{border-left-color:#ef4444;}
+.ss-ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.ss-body{flex:1;min-width:0;}
+.ss-iname{font-size:10px;font-weight:700;color:#013440;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ss-isub{font-size:8.5px;color:#9ca3af;margin-top:1px;}
+.ss-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;}
+.ss-price{font-size:11px;font-weight:900;color:#013440;}
+.ss-pill{font-size:8px;font-weight:700;padding:2px 6px;border-radius:20px;}
+.ss-pill.ok{background:#d1fae5;color:#065f46;}.ss-pill.low{background:#fef3c7;color:#92400e;}.ss-pill.out{background:#fee2e2;color:#991b1b;}
+.ss-nav{background:#fff;border-top:1px solid #e0e7ff;padding:6px 0 4px;display:flex;justify-content:space-around;}
+.ss-nb{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:600;color:#9ca3af;}
+.ss-nb.active{color:#028090;}
+.ss-nb .ni{font-size:16px;}
+.ss-nb.active .ni{filter:drop-shadow(0 0 4px rgba(2,128,144,.4));}
+
+/* ── TABLET UI: Hardware Store Pro — Modern ── */
+.hw-ui{height:100%;display:flex;flex-direction:column;background:#F7F9FC;font-family:-apple-system,sans-serif;}
+.hw-topbar{background:#fff;padding:0 14px;height:40px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #e8edf5;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.hw-logo{color:#013440;font-size:12px;font-weight:800;display:flex;align-items:center;gap:6px;}
+.hw-logo .hl-dot{width:8px;height:8px;background:linear-gradient(135deg,#028090,#00B4CC);border-radius:50%;}
+.hw-logo span{color:#F5A623;}
+.hw-search{flex:1;background:#F4F6F9;border:1px solid #e8edf5;border-radius:20px;padding:4px 12px;font-size:11px;color:#9ca3af;}
+.hw-topbar-right{display:flex;align-items:center;gap:8px;}
+.hw-notif{width:28px;height:28px;background:#F4F6F9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;position:relative;}
+.hw-notif::after{content:'3';font-size:7px;font-weight:700;background:#ef4444;color:#fff;width:13px;height:13px;border-radius:50%;position:absolute;top:-3px;right:-3px;display:flex;align-items:center;justify-content:center;line-height:13px;text-align:center;}
+.hw-user{width:28px;height:28px;background:linear-gradient(135deg,#013440,#028090);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;}
+.hw-body{display:flex;flex:1;overflow:hidden;}
+.hw-sidebar{width:90px;background:#fff;border-right:1px solid #e8edf5;padding:8px 5px;display:flex;flex-direction:column;gap:2px;}
+.hw-cat{padding:7px 6px;font-size:9px;font-weight:600;color:#9ca3af;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:8px;transition:.15s;}
+.hw-cat.active{background:linear-gradient(135deg,rgba(1,52,64,.07),rgba(2,128,144,.07));color:#028090;}
+.hw-cat .cat-ico{font-size:18px;}.hw-cat .cat-lbl{font-size:8px;}
+.hw-main{flex:1;padding:9px;overflow:hidden;display:flex;flex-direction:column;gap:7px;}
+.hw-kpis{display:flex;gap:5px;}
+.hw-kpi{flex:1;background:#fff;border-radius:8px;padding:6px 7px;box-shadow:0 1px 4px rgba(0,0,0,.05);border-top:3px solid;}
+.hw-kpi.k1{border-top-color:#028090;}.hw-kpi.k2{border-top-color:#F5A623;}.hw-kpi.k3{border-top-color:#10b981;}.hw-kpi.k4{border-top-color:#ef4444;}
+.hw-kpi .kv{font-size:12px;font-weight:900;color:#013440;}.hw-kpi .kl{font-size:8px;color:#9ca3af;margin-top:1px;}
+.hw-section-title{font-size:10px;font-weight:800;color:#013440;display:flex;align-items:center;justify-content:space-between;}
+.hw-section-title .hst-count{font-size:9px;color:#9ca3af;font-weight:500;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
+.hw-card{background:#fff;border-radius:8px;padding:7px 6px;box-shadow:0 1px 4px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:2px;position:relative;overflow:hidden;}
+.hw-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.hw-card.c1::after{background:linear-gradient(90deg,#fbbf24,#f59e0b);}.hw-card.c2::after{background:linear-gradient(90deg,#60a5fa,#3b82f6);}
+.hw-card.c3::after{background:linear-gradient(90deg,#34d399,#10b981);}.hw-card.c4::after{background:linear-gradient(90deg,#f472b6,#ec4899);}
+.hw-card.c5::after{background:linear-gradient(90deg,#a78bfa,#8b5cf6);}.hw-card.c6::after{background:linear-gradient(90deg,#fb923c,#f97316);}
+.hc-emo{font-size:20px;line-height:1;margin-top:4px;}.hc-name{font-size:9px;font-weight:700;color:#013440;line-height:1.2;}
+.hc-price{font-size:11px;font-weight:900;color:#F5A623;}
+.hc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:1px;}
+.hc-sku{font-size:7.5px;color:#d1d5db;}.hc-stk{font-size:7.5px;font-weight:600;}
+.hc-stk.ok{color:#10b981;}.hc-stk.warn{color:#f59e0b;}.hc-stk.bad{color:#ef4444;}
+.hw-statusbar{padding:4px 12px;background:#fff;border-top:1px solid #e8edf5;display:flex;gap:12px;align-items:center;}
+.hw-stat{font-size:8.5px;color:#9ca3af;display:flex;align-items:center;gap:3px;}
+.hw-stat strong{color:#013440;font-weight:700;}
+
+/* ── LAPTOP UI: Legal CRM — Premium Dark ── */
+.legal-ui{height:100%;display:flex;flex-direction:column;background:#0D1B2A;font-family:-apple-system,sans-serif;}
+.legal-topbar{background:#081218;padding:6px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);}
+.lt-dots{display:flex;gap:5px;align-items:center;}
+.lt-dot{width:9px;height:9px;border-radius:50%;}
+.lt-urlbar{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:3px 10px;font-size:9.5px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:5px;}
+.lt-lock{font-size:9px;}
+.lt-actions{display:flex;gap:5px;}
+.lt-btn{background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);border:none;padding:3px 8px;border-radius:4px;font-size:9px;cursor:pointer;}
+.legal-body{display:flex;flex:1;overflow:hidden;}
+.legal-sidebar{width:125px;background:#081218;border-right:1px solid rgba(255,255,255,.05);padding:0;display:flex;flex-direction:column;}
+.ls-brand{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.05);}
+.ls-brand-name{font-size:11px;font-weight:800;color:#fff;}
+.ls-brand-sub{font-size:8px;color:rgba(255,255,255,.3);margin-top:1px;}
+.ls-section{padding:8px 12px 3px;font-size:8px;font-weight:700;color:rgba(255,255,255,.22);letter-spacing:1px;text-transform:uppercase;}
+.ls-item{padding:6px 12px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:10px;cursor:pointer;transition:.15s;position:relative;}
+.ls-item:hover{color:rgba(255,255,255,.65);background:rgba(255,255,255,.03);}
+.ls-item.active{background:linear-gradient(90deg,rgba(0,180,204,.14),rgba(0,180,204,.02));color:#00C9E4;border-left:2px solid #00B4CC;}
+.ls-item .ls-ico{font-size:13px;width:16px;text-align:center;}
+.ls-badge{margin-left:auto;border-radius:10px;padding:1px 6px;font-size:7.5px;font-weight:700;background:rgba(245,166,35,.2);color:#F5A623;}
+.ls-item.active .ls-badge{background:rgba(0,180,204,.18);color:#00B4CC;}
+.ls-bottom{margin-top:auto;padding:8px 12px;border-top:1px solid rgba(255,255,255,.05);}
+.ls-user{display:flex;align-items:center;gap:7px;}
+.ls-uav{width:22px;height:22px;background:linear-gradient(135deg,#F5A623,#ff7b00);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;}
+.ls-uname{font-size:9px;font-weight:600;color:rgba(255,255,255,.55);}
+.ls-urole{font-size:8px;color:rgba(255,255,255,.28);}
+.legal-main{flex:1;padding:11px;overflow:hidden;display:flex;flex-direction:column;gap:7px;}
+.lm-header{display:flex;align-items:center;justify-content:space-between;}
+.lm-title-text{font-size:12px;font-weight:700;color:#fff;}
+.lm-new{background:linear-gradient(135deg,#028090,#00B4CC);color:#fff;border:none;padding:5px 11px;border-radius:6px;font-size:9px;font-weight:700;cursor:pointer;}
+.legal-statsbar{display:flex;gap:5px;}
+.lstb{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:6px 8px;flex:1;position:relative;overflow:hidden;}
+.lstb::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:1px;}
+.lstb.s1::before{background:linear-gradient(90deg,#00B4CC,#028090);}.lstb.s2::before{background:linear-gradient(90deg,#ef4444,#dc2626);}
+.lstb.s3::before{background:linear-gradient(90deg,#10b981,#059669);}.lstb.s4::before{background:linear-gradient(90deg,#f59e0b,#d97706);}
+.lstb-num{font-size:15px;font-weight:900;color:#fff;line-height:1;}
+.lstb-label{font-size:7.5px;color:rgba(255,255,255,.28);margin-top:2px;text-transform:uppercase;letter-spacing:.3px;}
+.matter-list{display:flex;flex-direction:column;gap:4px;}
+.matter-row{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:7px 10px;display:flex;align-items:center;gap:8px;border-left:3px solid transparent;transition:.15s;}
+.matter-row:hover{background:rgba(255,255,255,.07);}
+.matter-row.urgent{border-left-color:#ef4444;}.matter-row.active{border-left-color:#10b981;}.matter-row.review{border-left-color:#f59e0b;}
+.mr-av{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;}
+.av-red{background:rgba(239,68,68,.2);color:#ef4444;}.av-green{background:rgba(16,185,129,.18);color:#10b981;}
+.av-amber{background:rgba(245,158,11,.18);color:#f59e0b;}.av-blue{background:rgba(59,130,246,.18);color:#60a5fa;}
+.mr-body{flex:1;min-width:0;}
+.mr-name{font-size:10px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mr-client{font-size:8px;color:rgba(255,255,255,.32);margin-top:1px;}
+.mr-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0;}
+.mr-status{font-size:7.5px;font-weight:700;padding:2px 7px;border-radius:10px;}
+.status-urgent{background:rgba(239,68,68,.15);color:#ef4444;}
+.status-active{background:rgba(16,185,129,.12);color:#10b981;}
+.status-review{background:rgba(245,158,11,.12);color:#f59e0b;}
+.mr-due{font-size:8px;color:rgba(255,255,255,.25);}
+
+/* ── TIERS ── */
+.tiers-sec{background:var(--light);}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+.tier-card{background:#fff;border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;overflow:hidden;transition:.25s;}
+.tier-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.1);}
+.tier-card.featured{background:linear-gradient(160deg,#013440,#028090);color:#fff;}
+.tier-card.featured .tier-price{color:var(--amber);}
+.tier-card.featured .tier-desc{color:rgba(255,255,255,.65);}
+.tier-card.featured .tier-feature{color:rgba(255,255,255,.8);border-bottom-color:rgba(255,255,255,.1);}
+.tier-badge{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--mint);margin-bottom:8px;}
+.tier-card.featured .tier-badge{color:var(--amber);}
+.tier-name{font-size:20px;font-weight:900;color:var(--teal);margin-bottom:4px;}
+.tier-card.featured .tier-name{color:#fff;}
+.tier-price{font-size:36px;font-weight:900;color:var(--teal);line-height:1;}
+.tier-price sup{font-size:16px;vertical-align:top;margin-top:6px;display:inline-block;}
+.tier-time{font-size:12px;color:var(--sub);margin:8px 0 16px;}
+.tier-card.featured .tier-time{color:rgba(255,255,255,.6);}
+.tier-features{list-style:none;}
+.tier-feature{padding:8px 0;font-size:13px;color:var(--text);border-bottom:1px solid var(--mid);display:flex;align-items:center;gap:8px;}
+.tier-feature:last-child{border-bottom:none;}
+.tier-feature::before{content:'✓';color:var(--mint);font-weight:700;flex-shrink:0;}
+.tier-card.featured .tier-feature::before{color:var(--amber);}
+
+/* ── COMPETITOR PRICING ── */
+.comp-sec{background:#fff;}
+.price-table-wrap{overflow-x:auto;margin-top:32px;}
+.price-table{width:100%;border-collapse:collapse;font-size:13px;}
+.price-table th{background:var(--teal);color:#fff;padding:12px 16px;text-align:left;font-weight:700;font-size:12px;}
+.price-table td{padding:11px 16px;border-bottom:1px solid var(--mid);}
+.price-table tr:hover td{background:var(--light);}
+.price-table tr.ours td{background:linear-gradient(90deg,rgba(0,180,204,.08),rgba(0,180,204,.03));font-weight:700;}
+.price-table tr.ours td:first-child{border-left:4px solid var(--mint);}
+.cheaper{color:#ef4444;font-size:11px;}
+.goldilocks{margin-top:24px;background:linear-gradient(135deg,rgba(245,166,35,.08),rgba(245,166,35,.03));border:2px solid rgba(245,166,35,.3);border-radius:16px;padding:24px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.gz-item{text-align:center;}
+.gz-icon{font-size:32px;margin-bottom:8px;}
+.gz-title{font-size:13px;font-weight:800;color:var(--teal);margin-bottom:6px;}
+.gz-desc{font-size:12px;color:var(--sub);line-height:1.5;}
+.gz-item.center-item{border-left:1px solid rgba(245,166,35,.3);border-right:1px solid rgba(245,166,35,.3);padding:0 20px;}
+.gz-item.center-item .gz-title{color:var(--amber2);}
+
+/* ── FINANCIALS ── */
+.fin-sec{background:linear-gradient(135deg,#011F28 0%,#013440 100%);}
+.fin-sec .section-label{color:var(--amber);}
+.fin-sec .section-title{color:#fff;}
+.fin-sec .section-sub{color:rgba(255,255,255,.6);}
+.fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:16px;}
+.scenario-cards{display:flex;flex-direction:column;gap:12px;}
+.sc-card{background:rgba(255,255,255,.06);border-radius:14px;padding:18px 20px;border-left:4px solid;}
+.sc-card.sc1{border-left-color:#64748b;}
+.sc-card.sc2{border-left-color:var(--mint);background:rgba(0,180,204,.08);}
+.sc-card.sc3{border-left-color:var(--amber);}
+.sc-title{font-size:11px;font-weight:800;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+.sc-card.sc2 .sc-title{color:var(--mint);}
+.sc-card.sc3 .sc-title{color:var(--amber);}
+.sc-rev{font-size:22px;font-weight:900;color:#fff;}
+.sc-details{display:flex;gap:16px;margin-top:6px;}
+.sc-det{font-size:11px;color:rgba(255,255,255,.45);}
+.sc-det strong{color:rgba(255,255,255,.75);}
+.chart-box{background:rgba(255,255,255,.05);border-radius:14px;padding:20px;position:relative;}
+.chart-box h4{font-size:13px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:16px;}
+.chart-box .chart-canvas-wrap{position:relative;height:220px;width:100%;}
+
+/* ── ASK ── */
+.ask-sec{background:var(--light);}
+.ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:40px;}
+.tranche-block{background:#fff;border-radius:18px;padding:28px;box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.tb-num{display:inline-block;background:var(--teal);color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:13px;font-weight:800;margin-bottom:12px;}
+.tb-title{font-size:18px;font-weight:900;color:var(--teal);margin-bottom:4px;}
+.tb-trigger{font-size:12px;color:var(--sub);margin-bottom:16px;}
+.tb-items{list-style:none;}
+.tb-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--mid);font-size:13px;}
+.tb-item:last-child{border-bottom:none;font-weight:700;color:var(--teal);}
+.tb-item .amount{font-weight:700;color:var(--teal2);}
+.tb-item:last-child .amount{color:var(--teal);}
+.tb-gate{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.3);border-radius:10px;padding:12px 14px;margin-top:16px;}
+.tb-gate-title{font-size:11px;font-weight:800;color:var(--amber2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+.tb-gate-items{list-style:none;}
+.tb-gate-item{font-size:12px;color:var(--sub);padding:3px 0;display:flex;align-items:flex-start;gap:6px;}
+.tb-gate-item::before{content:'→';color:var(--amber);flex-shrink:0;}
+.ask-returns{background:#fff;border-radius:18px;padding:28px;box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.ask-returns h3{font-size:18px;font-weight:900;color:var(--teal);margin-bottom:18px;}
+.returns-table{width:100%;border-collapse:collapse;font-size:13px;}
+.returns-table th{text-align:left;padding:8px 10px;font-size:11px;font-weight:700;color:var(--sub);border-bottom:2px solid var(--mid);text-transform:uppercase;letter-spacing:.3px;}
+.returns-table td{padding:10px 10px;border-bottom:1px solid var(--mid);}
+.returns-table tr:last-child td{border-bottom:none;}
+.return-x{font-weight:900;color:var(--teal2);font-size:15px;}
+.ask-terms{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.term-item{background:var(--light);border-radius:10px;padding:12px 14px;}
+.term-label{font-size:10px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.term-value{font-size:14px;font-weight:800;color:var(--teal);}
+
+/* ── FOUNDER ── */
+.founder-sec{background:#fff;}
+.founder-grid{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start;margin-top:40px;}
+.founder-avatar{width:160px;height:160px;background:linear-gradient(135deg,var(--teal),var(--teal2));border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:56px;color:rgba(255,255,255,.8);flex-shrink:0;box-shadow:0 16px 48px rgba(1,52,64,.25);}
+.founder-name{font-size:28px;font-weight:900;color:var(--teal);margin-bottom:4px;}
+.founder-title{font-size:14px;color:var(--mint);font-weight:600;margin-bottom:16px;}
+.founder-bio{font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:20px;max-width:580px;}
+.creds-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.cred-item{background:var(--light);border-radius:12px;padding:14px 16px;border-left:3px solid var(--mint);}
+.cred-icon{font-size:18px;margin-bottom:6px;}
+.cred-title{font-size:12px;font-weight:700;color:var(--teal);margin-bottom:2px;}
+.cred-desc{font-size:11px;color:var(--sub);line-height:1.4;}
+
+/* ── MOATS ── */
+.moats-sec{background:var(--light);}
+.moats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+.moat-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 3px 12px rgba(0,0,0,.06);transition:.25s;}
+.moat-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.1);}
+.moat-icon{font-size:32px;margin-bottom:12px;}
+.moat-title{font-size:15px;font-weight:800;color:var(--teal);margin-bottom:8px;}
+.moat-desc{font-size:13px;color:var(--sub);line-height:1.6;}
+
+/* ── CTA FOOTER ── */
+.cta-footer{background:linear-gradient(135deg,#011F28,var(--teal));padding:80px 40px;text-align:center;}
+.cta-footer h2{font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;margin-bottom:12px;letter-spacing:-.5px;}
+.cta-footer p{font-size:16px;color:rgba(255,255,255,.6);max-width:500px;margin:0 auto 36px;line-height:1.6;}
+.cta-contact{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-top:40px;}
+.cta-contact-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:14px;}
+.cta-contact-item .ci-icon{font-size:18px;}
+.cta-contact-item strong{color:#fff;}
+.confidential-bar{background:rgba(0,0,0,.3);padding:14px 40px;text-align:center;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.3px;}
+
+/* ── FADE-IN ANIMATIONS ── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+.fade-in-delay-1{transition-delay:.1s;}
+.fade-in-delay-2{transition-delay:.2s;}
+.fade-in-delay-3{transition-delay:.3s;}
+.fade-in-delay-4{transition-delay:.4s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .gap-grid,.fin-grid,.ask-grid,.founder-grid{grid-template-columns:1fr;}
+  .tier-grid,.moats-grid{grid-template-columns:1fr 1fr;}
+  .tablet-device{width:320px;height:230px;}
+  .laptop-lid{width:380px;height:235px;}
+  .laptop-base{width:410px;}
+  .devices-row{gap:20px;}
+  .creds-grid{grid-template-columns:1fr;}
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  section{padding:56px 20px;}
+  .tier-grid,.moats-grid{grid-template-columns:1fr;}
+  .goldilocks{grid-template-columns:1fr;}
+  .gz-item.center-item{border:none;padding:0;}
+  .ask-terms{grid-template-columns:1fr;}
+}
+
+/* ══════════════════════════════════════════
+   SACHET REVOLUTION — 6 NEW VISUAL SECTIONS
+   ══════════════════════════════════════════ */
+
+/* Shared dark section circuit overlay */
+.new-dark-sec {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 40px;
+}
+.new-dark-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,180,204,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,180,204,.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.new-dark-sec::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,180,204,.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+.new-sec-z { position: relative; z-index: 1; }
+
+/* ── PAGE 2: Product Philosophy ── */
+.philosophy-sec {
+  background: linear-gradient(135deg, #011F28 0%, #013440 55%, #01505f 100%);
+}
+.phil-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+.phil-card {
+  border-radius: 20px;
+  padding: 28px;
+}
+.phil-passive {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+}
+.phil-active-card {
+  background: linear-gradient(135deg, rgba(0,180,204,.13), rgba(0,180,204,.04));
+  border: 1px solid rgba(0,180,204,.28);
+}
+.phil-card-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.phil-card-h {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.phil-card-sub {
+  font-size: 11px;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+.phil-rows { display: flex; flex-direction: column; gap: 8px; }
+.phil-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-radius: 9px;
+  font-size: 13px;
+  color: rgba(255,255,255,.6);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.05);
+}
+.phil-row.live-row {
+  background: rgba(0,180,204,.08);
+  border-color: rgba(0,180,204,.14);
+  color: rgba(255,255,255,.85);
+}
+.phil-row-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: rgba(255,255,255,.28);
+  min-width: 80px;
+}
+.live-row .phil-row-lbl { color: var(--mint); }
+.phil-quote {
+  margin-top: 36px;
+  padding: 26px 32px;
+  background: rgba(245,166,35,.1);
+  border: 1px solid rgba(245,166,35,.24);
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.65;
+  text-align: center;
+}
+.phil-quote em { color: var(--amber); font-style: normal; }
+
+/* ── PAGE 14: Infrastructure Tailwinds ── */
+.infra-sec {
+  background: var(--light);
+  padding: 80px 40px;
+}
+.infra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 40px;
+  align-items: start;
+}
+.infra-dark-box {
+  background: linear-gradient(135deg, #011F28, #013440);
+  border-radius: 20px;
+  padding: 28px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.infra-dark-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,180,204,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,180,204,.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.infra-box-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,.45);
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+.infra-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  height: 130px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.infra-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  height: 100%;
+  justify-content: flex-end;
+}
+.infra-bar-v { font-size: 9px; font-weight: 800; color: rgba(255,255,255,.65); }
+.infra-bar { width: 100%; border-radius: 4px 4px 0 0; }
+.infra-bar-l { font-size: 8px; color: rgba(255,255,255,.3); }
+.infra-ic-list { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.infra-ic {
+  border-radius: 10px;
+  padding: 11px 14px;
+  border-left: 3px solid;
+  background: rgba(255,255,255,.05);
+}
+.infra-ic.ic-gap { border-left-color: #ef4444; }
+.infra-ic.ic-fix { border-left-color: var(--mint); }
+.infra-ic.ic-insight { border-left-color: var(--amber); }
+.infra-ic-lbl {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 3px;
+}
+.ic-gap .infra-ic-lbl { color: #ef4444; }
+.ic-fix .infra-ic-lbl { color: var(--mint); }
+.ic-insight .infra-ic-lbl { color: var(--amber); }
+.infra-ic-txt { font-size: 11px; color: rgba(255,255,255,.65); line-height: 1.5; }
+.infra-stats-col { display: flex; flex-direction: column; gap: 16px; }
+.infra-stat-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+  border-left: 4px solid;
+}
+.isc-a { border-left-color: #ef4444; }
+.isc-b { border-left-color: var(--teal2); }
+.isc-c { border-left-color: var(--amber); }
+.isc-big {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.isc-a .isc-big { color: #ef4444; }
+.isc-b .isc-big { color: var(--teal2); }
+.isc-c .isc-big { color: var(--amber2); }
+.isc-desc { font-size: 12px; color: var(--sub); line-height: 1.55; }
+
+/* ── PAGE 3: Technical Architecture ── */
+.tech-sec {
+  background: linear-gradient(135deg, #011F28 0%, #013440 55%, #01505f 100%);
+}
+.tech-bridge {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  margin-top: 40px;
+  align-items: center;
+}
+.tech-side {
+  border-radius: 20px;
+  padding: 26px;
+}
+.tech-spa { background: rgba(245,166,35,.08); border: 1px solid rgba(245,166,35,.2); }
+.tech-pwa { background: rgba(0,180,204,.08); border: 1px solid rgba(0,180,204,.2); }
+.tech-side-icon { font-size: 36px; margin-bottom: 10px; }
+.tech-side-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 4px;
+}
+.tech-side-h {
+  font-size: 17px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.tech-feat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  font-size: 12px;
+  color: rgba(255,255,255,.7);
+}
+.tech-feat:first-of-type { border-top: none; }
+.tf-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.tech-spa .tf-dot { background: var(--amber); }
+.tech-pwa .tf-dot { background: var(--mint); }
+.tech-mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.tech-s-badge {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--amber), var(--amber2));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(245,166,35,.4);
+  flex-shrink: 0;
+}
+.tech-vline {
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(180deg, var(--amber), var(--mint));
+  border-radius: 2px;
+}
+.tech-tagline {
+  margin-top: 32px;
+  text-align: center;
+  padding: 20px 28px;
+  background: rgba(0,180,204,.07);
+  border: 1px solid rgba(0,180,204,.18);
+  border-radius: 14px;
+}
+.tech-tagline p {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.6;
+}
+.tech-tagline .th { color: var(--mint2); }
+.tech-tagline .tn { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 6px; font-weight: 400; }
+.tech-tagline .tn span { color: var(--amber); font-weight: 700; }
+
+/* ── PAGE 4: Pricing Psyche ── */
+.psyche-sec {
+  background: #fff;
+  padding: 80px 40px;
+}
+.sari-shelf {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+.shelf-item {
+  border-radius: 16px;
+  padding: 22px 16px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: .25s;
+  position: relative;
+}
+.shelf-item:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.1); }
+.si-free { background: var(--light); border-color: rgba(0,180,204,.2); }
+.si-load { background: var(--light); border-color: rgba(245,166,35,.25); }
+.si-meal { background: linear-gradient(160deg,#013440,#028090); border-color: rgba(0,180,204,.4); }
+.si-asset { background: linear-gradient(160deg,#011F28,#013440); border-color: rgba(245,166,35,.4); }
+.shelf-emo { font-size: 36px; margin-bottom: 10px; }
+.shelf-badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.si-free .shelf-badge { color: var(--teal2); }
+.si-load .shelf-badge { color: var(--amber2); }
+.si-meal .shelf-badge { color: var(--mint2); }
+.si-asset .shelf-badge { color: var(--amber); }
+.shelf-name {
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.si-free .shelf-name, .si-load .shelf-name { color: var(--teal); }
+.si-meal .shelf-name, .si-asset .shelf-name { color: #fff; }
+.shelf-price {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.si-free .shelf-price { color: var(--mint); }
+.si-load .shelf-price { color: var(--amber2); }
+.si-meal .shelf-price { color: var(--mint2); }
+.si-asset .shelf-price { color: var(--amber); }
+.shelf-desc {
+  font-size: 11px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.si-free .shelf-desc, .si-load .shelf-desc { color: var(--sub); }
+.si-meal .shelf-desc, .si-asset .shelf-desc { color: rgba(255,255,255,.6); }
+.shelf-pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 20px;
+}
+.si-free .shelf-pill { background: rgba(0,180,204,.1); color: var(--teal2); }
+.si-load .shelf-pill { background: rgba(245,166,35,.1); color: var(--amber2); }
+.si-meal .shelf-pill, .si-asset .shelf-pill { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); }
+.psyche-insight {
+  margin-top: 24px;
+  padding: 20px 26px;
+  background: linear-gradient(135deg, #011F28, #013440);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.pi-icon { font-size: 26px; flex-shrink: 0; }
+.pi-text { font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.6; }
+.pi-text strong { color: var(--amber); }
+
+/* ── PAGE 5: Trust Ladder ── */
+.ladder-sec {
+  background: linear-gradient(135deg, #011F28 0%, #013440 55%, #01505f 100%);
+}
+.ladder-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 40px;
+  margin-top: 40px;
+  align-items: start;
+}
+.ladder-steps { display: flex; flex-direction: column; }
+.ladder-step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  position: relative;
+}
+.ladder-step:last-child { border-bottom: none; }
+.ls-connector {
+  position: absolute;
+  left: 21px;
+  top: 66px;
+  bottom: -22px;
+  width: 2px;
+}
+.ls-num {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+}
+.lsn1 { background: linear-gradient(135deg, #028090, #00B4CC); }
+.lsn2 { background: linear-gradient(135deg, #F5A623, #FF7B00); }
+.lsn3 { background: transparent; border: 2px solid var(--amber); color: var(--amber); }
+.ls-body { flex: 1; }
+.ls-timeline {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  margin-bottom: 3px;
+}
+.lss1 .ls-timeline { color: var(--mint); }
+.lss2 .ls-timeline { color: var(--amber); }
+.lss3 .ls-timeline { color: rgba(255,255,255,.4); }
+.ls-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 2px; }
+.ls-price { font-size: 20px; font-weight: 900; margin-bottom: 5px; }
+.lss1 .ls-price { color: var(--mint2); }
+.lss2 .ls-price { color: var(--amber); }
+.lss3 .ls-price { color: var(--amber); }
+.ls-desc { font-size: 12px; color: rgba(255,255,255,.45); font-style: italic; line-height: 1.5; }
+.ladder-note-box {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 22px;
+}
+.lnb-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 12px;
+}
+.lnb-text { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.65; }
+.lnb-text strong { color: var(--amber); }
+
+/* ── PAGE 15: Closing Mission ── */
+.mission-sec {
+  background: linear-gradient(135deg, #011F28 0%, #013440 50%, #01505f 100%);
+  padding: 100px 40px;
+  text-align: center;
+}
+.mission-inner { max-width: 760px; margin: 0 auto; }
+.mission-emojis { font-size: 34px; margin-bottom: 28px; letter-spacing: 8px; }
+.mission-h {
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -.5px;
+}
+.mission-h span { color: var(--mint2); }
+.mission-divider {
+  width: 56px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--amber), var(--mint));
+  border-radius: 2px;
+  margin: 24px auto;
+}
+.mission-quote {
+  font-size: 18px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mission-quote strong { color: #fff; }
+.mission-pill {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--amber), var(--amber2));
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: 0 8px 28px rgba(245,166,35,.4);
+  letter-spacing: .2px;
+}
+.mission-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.mstat { text-align: center; }
+.mstat-num { font-size: 28px; font-weight: 900; color: var(--amber); line-height: 1; }
+.mstat-lbl { font-size: 10px; color: rgba(255,255,255,.35); margin-top: 4px; letter-spacing: .3px; }
+
+/* ── Responsive new sections ── */
+@media (max-width: 900px) {
+  .phil-compare, .infra-grid, .tech-bridge, .ladder-layout { grid-template-columns: 1fr; }
+  .tech-bridge { grid-template-columns: 1fr; }
+  .tech-mid { flex-direction: row; }
+  .tech-vline { width: 80px; height: 2px; }
+  .sari-shelf { grid-template-columns: 1fr 1fr; }
+  .ladder-note-box { max-width: 100%; }
+}
+@media (max-width: 600px) {
+  .sari-shelf { grid-template-columns: 1fr; }
+  .mission-stats { gap: 20px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Tech Vision <span>PH</span></div>
+  <ul class="nav-links">
+    <li><a href="#opportunity">Opportunity</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#market">Market</a></li>
+    <li><a href="#financials">Financials</a></li>
+    <li><a href="#ask">Investment</a></li>
+  </ul>
+  <a href="#ask" class="nav-cta">View the Ask →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📄 Investor Package — Confidential · February 2026</div>
+  <h1>Sachet Software<br><span>for Philippine MSMEs</span></h1>
+  <p class="hero-sub">Enterprise-grade digital tools — priced for the Filipino micro-business. One-time purchase. 48-hour delivery. Zero technical debt.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="num">1<span>M+</span></div><div class="lbl">MSMEs Addressable</div></div>
+    <div class="hstat"><div class="num">80<span>+</span></div><div class="lbl">Products Built</div></div>
+    <div class="hstat"><div class="num"><span>₱</span>12<span>K</span></div><div class="lbl">Entry Price</div></div>
+    <div class="hstat"><div class="num">48<span>hr</span></div><div class="lbl">Delivery Time</div></div>
+    <div class="hstat"><div class="num">34<span>%</span></div><div class="lbl">Net Margin (Base)</div></div>
+    <div class="hstat"><div class="num"><span>₱</span>600<span>K</span></div><div class="lbl">Raise Sought</div></div>
+  </div>
+  <div class="hero-btns">
+    <a href="#ask" class="btn-primary">See the Investment ₱600K →</a>
+    <a href="#products" class="btn-ghost">View Products</a>
+  </div>
+  <div class="scroll-hint"><span>Scroll to explore</span><div class="scroll-arrow"></div></div>
+</div>
+
+
+<!-- PAGE 2: Product Philosophy — Passive vs Active Utility -->
+<section class="philosophy-sec new-dark-sec fade-in">
+<div class="section-inner new-sec-z">
+  <div style="position:absolute;top:-10px;right:-20px;font-size:72px;opacity:.06;pointer-events:none;transform:rotate(-12deg);">🌴</div>
+  <div style="position:absolute;bottom:-10px;left:-20px;font-size:56px;opacity:.06;pointer-events:none;">🌺</div>
+  <div class="section-label" style="color:var(--amber);">Product Philosophy</div>
+  <h2 class="section-title" style="color:#fff;">The Shift: <span style="color:var(--amber);">Passive</span> Consumption<br>vs. <span style="color:var(--mint2);">Active</span> Utility</h2>
+  <p class="section-sub" style="color:rgba(255,255,255,.6);">Every <span style="color:var(--amber);font-weight:700;">Sachet</span> product is a <span style="color:var(--mint2);font-weight:700;">Living Artifact</span> — software that actively works for the MSME, not software they merely read.</p>
+  <div class="phil-compare">
+    <div class="phil-card phil-passive fade-in fade-in-delay-1">
+      <div class="phil-card-badge" style="color:rgba(255,255,255,.35);">📄 The Old Way</div>
+      <div class="phil-card-h">Static PDF</div>
+      <div class="phil-card-sub" style="color:rgba(255,255,255,.3);">Passive Engagement</div>
+      <div class="phil-rows">
+        <div class="phil-row"><div class="phil-row-lbl">Action</div><span>User reads &amp; prints</span></div>
+        <div class="phil-row"><div class="phil-row-lbl">Pattern</div><span>One-time consumption</span></div>
+        <div class="phil-row"><div class="phil-row-lbl">Value</div><span>Value = Information</span></div>
+      </div>
+    </div>
+    <div class="phil-card phil-active-card fade-in fade-in-delay-2">
+      <div class="phil-card-badge" style="color:var(--amber);">⚡ The <span style="color:var(--amber);">Sachet</span> Model</div>
+      <div class="phil-card-h" style="color:var(--mint2);">Living Artifact</div>
+      <div class="phil-card-sub" style="color:var(--mint);">Active Engagement</div>
+      <div class="phil-rows">
+        <div class="phil-row live-row"><div class="phil-row-lbl">Action</div><span>User clicks &amp; calculates</span></div>
+        <div class="phil-row live-row"><div class="phil-row-lbl">Pattern</div><span>Daily, ongoing utility</span></div>
+        <div class="phil-row live-row"><div class="phil-row-lbl">Value</div><span style="color:var(--mint2);font-weight:700;">Value = Utility</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="phil-quote fade-in fade-in-delay-3">
+    <div style="font-size:26px;margin-bottom:10px;">💬</div>
+    "Don't sell the format; sell the <em>work being done for you</em>.<br>
+    A rate sheet is read; a rate calculator <em>serves</em>."
+  </div>
+</div>
+</section>
+
+<!-- GAP SECTION -->
+<section class="gap-sec" id="opportunity">
+<div class="section-inner">
+  <div class="gap-grid">
+    <div class="fade-in">
+      <div class="section-label">The Market Gap</div>
+      <h2 class="section-title">1 Million MSMEs.<br>54% Have No Website.</h2>
+      <p class="section-sub">Filipino micro-businesses know they need digital presence — but traditional web development is priced to exclude them. We fix that.</p>
+      <div class="gap-stats">
+        <div class="gstat fade-in fade-in-delay-1"><div class="big">87%</div><div class="desc">of Filipino consumers search online before purchasing</div></div>
+        <div class="gstat fade-in fade-in-delay-2"><div class="big">54%</div><div class="desc">of MSMEs have zero web presence today</div></div>
+        <div class="gstat fade-in fade-in-delay-3"><div class="big">₱150K+</div><div class="desc">traditional agency cost — far beyond MSME budgets</div></div>
+        <div class="gstat fade-in fade-in-delay-4"><div class="big">89%</div><div class="desc">who tried web development abandoned it — 54% due to cost</div></div>
+      </div>
+    </div>
+    <div class="gap-visual fade-in fade-in-delay-2">
+      <h4>The Typical MSME Stack (Before Us)</h4>
+      <div class="stack-item"><span class="icon">📘</span><span class="tool">Facebook Page</span><span class="gap">No backend, no inventory</span></div>
+      <div class="stack-item"><span class="icon">💳</span><span class="tool">GCash / Maya</span><span class="gap">Payments only, no CRM</span></div>
+      <div class="stack-item"><span class="icon">💬</span><span class="tool">Messenger / Viber</span><span class="gap">No history, no follow-up</span></div>
+      <div class="stack-item"><span class="icon">📓</span><span class="tool">Physical Notebook</span><span class="gap">No alerts, easily lost</span></div>
+      <div class="stack-item"><span class="icon">🌐</span><span class="tool">Website</span><span class="gap">54% have none at all</span></div>
+      <div class="stack-item"><span class="icon">💰</span><span class="tool">Manual BIR Receipts</span><span class="gap">Not audit-ready</span></div>
+      <div class="stack-result">⚠️ Data lives in 6 different places. Nothing talks to each other.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- PAGE 14: Infrastructure Tailwinds — Konektadong Pinoy -->
+<section class="infra-sec fade-in">
+<div class="section-inner">
+  <div class="section-label">Market Timing</div>
+  <h2 class="section-title">The Tailwind: Infrastructure<br>&amp; 'Konektadong Pinoy'</h2>
+  <p class="section-sub">Government policy and falling data costs are expanding our total addressable market — every single day. Our Offline-First PWA architecture is already positioned to capture every newly-connected Filipino MSME.</p>
+  <div class="infra-grid">
+    <div class="infra-dark-box fade-in fade-in-delay-1">
+      <div class="infra-box-title">📉 Internet Cost Trend — % of GNI (falling)</div>
+      <div class="infra-chart">
+        <div class="infra-bar-col">
+          <div class="infra-bar-v">11.3%</div>
+          <div class="infra-bar" style="height:100%;background:linear-gradient(180deg,#ef4444,rgba(239,68,68,.4));"></div>
+          <div class="infra-bar-l">2019</div>
+        </div>
+        <div class="infra-bar-col">
+          <div class="infra-bar-v">9.8%</div>
+          <div class="infra-bar" style="height:87%;background:linear-gradient(180deg,#f97316,rgba(249,115,22,.4));"></div>
+          <div class="infra-bar-l">2020</div>
+        </div>
+        <div class="infra-bar-col">
+          <div class="infra-bar-v">9.1%</div>
+          <div class="infra-bar" style="height:80%;background:linear-gradient(180deg,#f59e0b,rgba(245,158,11,.4));"></div>
+          <div class="infra-bar-l">2021</div>
+        </div>
+        <div class="infra-bar-col">
+          <div class="infra-bar-v">8.9%</div>
+          <div class="infra-bar" style="height:79%;background:linear-gradient(180deg,#00B4CC,rgba(0,180,204,.4));"></div>
+          <div class="infra-bar-l">2022</div>
+        </div>
+        <div class="infra-bar-col">
+          <div class="infra-bar-v">8.5%</div>
+          <div class="infra-bar" style="height:75%;background:linear-gradient(180deg,#10b981,rgba(16,185,129,.4));"></div>
+          <div class="infra-bar-l">2023+</div>
+        </div>
+      </div>
+      <div class="infra-ic-list" style="position:relative;z-index:1;">
+        <div class="infra-ic ic-gap">
+          <div class="infra-ic-lbl">⚠ The Gap</div>
+          <div class="infra-ic-txt">40% of Filipinos currently unserved — an expanding frontier market</div>
+        </div>
+        <div class="infra-ic ic-fix">
+          <div class="infra-ic-lbl">✅ The Fix</div>
+          <div class="infra-ic-txt">Konektadong Pinoy Act &amp; Common Tower Policy accelerating nationwide coverage</div>
+        </div>
+        <div class="infra-ic ic-insight">
+          <div class="infra-ic-lbl">💡 Insight</div>
+          <div class="infra-ic-txt">The digital divide is narrowing — expanding the TAM for <span style="color:var(--amber);font-weight:700;">Sachet Software</span> daily</div>
+        </div>
+      </div>
+    </div>
+    <div class="infra-stats-col fade-in fade-in-delay-2">
+      <div class="infra-stat-card isc-a">
+        <div class="isc-big">40%</div>
+        <div class="isc-desc">of Filipinos still unserved by reliable internet — each percentage point = hundreds of thousands of new MSME clients entering our addressable market</div>
+      </div>
+      <div class="infra-stat-card isc-b">
+        <div class="isc-big">₱5/day</div>
+        <div class="isc-desc">Data plans drive mobile-first adoption. Our <span style="color:var(--teal2);font-weight:700;">SPA/PWA architecture</span> is designed specifically for low-bandwidth, intermittent-connectivity realities</div>
+      </div>
+      <div class="infra-stat-card isc-c">
+        <div class="isc-big">89%</div>
+        <div class="isc-desc">GCash market share means payment infrastructure is mature and ready. Our products plug directly into existing Filipino digital payment habits</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- DEVICE SHOWCASE -->
+<section class="devices-sec" id="products">
+<div class="section-inner">
+  <div class="section-label">Living Artifacts — Not Static Pages</div>
+  <h2 class="section-title">Products That Actually Work<br>for MSMEs</h2>
+  <p class="section-sub">Every product in our portfolio is production-ready. What you see below is exactly what clients receive — interactive, offline-capable, Filipino-first digital tools.</p>
+
+  <div class="devices-row">
+
+    <!-- PHONE: Sari-Sari Tracker -->
+    <div class="phone-wrap fade-in">
+      <div class="phone-label">📱 Sachet Tier — ₱12,000</div>
+      <div class="phone-device">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="sari-ui">
+            <div class="ss-hdr">
+              <div class="ss-top-row">
+                <div class="ss-store-info">
+                  <div class="ss-label">📍 Brgy. Poblacion, Makati</div>
+                  <div class="ss-name">Aling Rosa's Store</div>
+                </div>
+                <div class="ss-avatar">R</div>
+              </div>
+              <div class="ss-card">
+                <div class="ss-card-row">
+                  <div>
+                    <div class="ss-c-label">Benta Ngayon</div>
+                    <div class="ss-c-amount">₱2,340</div>
+                    <div class="ss-c-change">↑ 18% kumpara kahapon</div>
+                  </div>
+                  <div class="ss-mini-kpis">
+                    <div class="ss-kpi">Naibenta: <b>47</b></div>
+                    <div class="ss-kpi">Kustomer: <b>23</b></div>
+                    <div class="ss-kpi">Target: <b style="color:#4ade80">82%</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ss-tabs">
+              <div class="ss-tab active">Imbentaryo</div>
+              <div class="ss-tab">Benta</div>
+              <div class="ss-tab">Ulat</div>
+            </div>
+            <div class="ss-list">
+              <div class="ss-item ok">
+                <div class="ss-ico" style="background:#fef3c7;">🧃</div>
+                <div class="ss-body"><div class="ss-iname">Juice Drink 200ml</div><div class="ss-isub">Stock: 48 piraso</div></div>
+                <div class="ss-right"><div class="ss-price">₱15</div><div class="ss-pill ok">OK</div></div>
+              </div>
+              <div class="ss-item low">
+                <div class="ss-ico" style="background:#dbeafe;">🧴</div>
+                <div class="ss-body"><div class="ss-iname">Shampoo Sachet</div><div class="ss-isub">Stock: 6 · Mag-order na</div></div>
+                <div class="ss-right"><div class="ss-price">₱12</div><div class="ss-pill low">Mababa</div></div>
+              </div>
+              <div class="ss-item out">
+                <div class="ss-ico" style="background:#fee2e2;">🍜</div>
+                <div class="ss-body"><div class="ss-iname">Lucky Me Noodles</div><div class="ss-isub">Stock: 0 · Ubos na!</div></div>
+                <div class="ss-right"><div class="ss-price">₱13</div><div class="ss-pill out">Ubos</div></div>
+              </div>
+              <div class="ss-item ok">
+                <div class="ss-ico" style="background:#fce7f3;">🍬</div>
+                <div class="ss-body"><div class="ss-iname">Candy Mix (10 pcs)</div><div class="ss-isub">Stock: 32 piraso</div></div>
+                <div class="ss-right"><div class="ss-price">₱25</div><div class="ss-pill ok">OK</div></div>
+              </div>
+            </div>
+            <div class="ss-nav">
+              <div class="ss-nb active"><span class="ni">📦</span>Stock</div>
+              <div class="ss-nb"><span class="ni">🛒</span>Ibenta</div>
+              <div class="ss-nb"><span class="ni">📊</span>Ulat</div>
+              <div class="ss-nb"><span class="ni">⚙️</span>Iba Pa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--sub);max-width:190px;line-height:1.4;">Real-time stock tracking, daily sales summary, low-stock alerts</div>
+    </div>
+
+    <!-- TABLET: Hardware Store Pro -->
+    <div class="tablet-wrap fade-in fade-in-delay-2">
+      <div class="tablet-label">📊 Growth Tier — ₱28,000</div>
+      <div class="tablet-device">
+        <div class="tablet-cam"></div>
+        <div class="tablet-screen">
+          <div class="hw-ui">
+            <div class="hw-topbar">
+              <div class="hw-logo"><div class="hl-dot"></div>Hardware <span>Store Pro</span></div>
+              <div class="hw-search">🔍 Maghanap ng produkto, brand, SKU...</div>
+              <div class="hw-topbar-right">
+                <div class="hw-notif">🔔</div>
+                <div class="hw-user">NS</div>
+              </div>
+            </div>
+            <div class="hw-body">
+              <div class="hw-sidebar">
+                <div class="hw-cat active"><span class="cat-ico">🔧</span><span class="cat-lbl">Kagamitan</span></div>
+                <div class="hw-cat"><span class="cat-ico">⚡</span><span class="cat-lbl">Kuryente</span></div>
+                <div class="hw-cat"><span class="cat-ico">🪣</span><span class="cat-lbl">Tubero</span></div>
+                <div class="hw-cat"><span class="cat-ico">🎨</span><span class="cat-lbl">Pintura</span></div>
+                <div class="hw-cat"><span class="cat-ico">🔩</span><span class="cat-lbl">Tornilyo</span></div>
+                <div class="hw-cat"><span class="cat-ico">📦</span><span class="cat-lbl">Lahat</span></div>
+              </div>
+              <div class="hw-main">
+                <div class="hw-kpis">
+                  <div class="hw-kpi k1"><div class="kv">248</div><div class="kl">Total SKU</div></div>
+                  <div class="hw-kpi k2"><div class="kv">₱18.4K</div><div class="kl">Benta Ngayon</div></div>
+                  <div class="hw-kpi k3"><div class="kv">14</div><div class="kl">Mga Order</div></div>
+                  <div class="hw-kpi k4"><div class="kv">7</div><div class="kl">Mababa</div></div>
+                </div>
+                <div class="hw-section-title">Kagamitan — Kamay<span class="hst-count">42 aytem</span></div>
+                <div class="hw-grid">
+                  <div class="hw-card c1"><div class="hc-emo">🔨</div><div class="hc-name">Martilyo 16oz</div><div class="hc-price">₱285</div><div class="hc-foot"><span class="hc-sku">HT-001</span><span class="hc-stk ok">✓ Stock</span></div></div>
+                  <div class="hw-card c2"><div class="hc-emo">🪛</div><div class="hc-name">Destornilyo 6pc</div><div class="hc-price">₱420</div><div class="hc-foot"><span class="hc-sku">HT-014</span><span class="hc-stk ok">✓ Stock</span></div></div>
+                  <div class="hw-card c3"><div class="hc-emo">📏</div><div class="hc-name">Measuring Tape 5m</div><div class="hc-price">₱175</div><div class="hc-foot"><span class="hc-sku">HT-023</span><span class="hc-stk warn">⚠ Mababa</span></div></div>
+                  <div class="hw-card c4"><div class="hc-emo">🔧</div><div class="hc-name">Adjustable Wrench</div><div class="hc-price">₱350</div><div class="hc-foot"><span class="hc-sku">HT-031</span><span class="hc-stk ok">✓ Stock</span></div></div>
+                  <div class="hw-card c5"><div class="hc-emo">✂️</div><div class="hc-name">Kutsilyo Heavy Duty</div><div class="hc-price">₱95</div><div class="hc-foot"><span class="hc-sku">HT-038</span><span class="hc-stk ok">✓ Stock</span></div></div>
+                  <div class="hw-card c6"><div class="hc-emo">🪚</div><div class="hc-name">Handsaw 22-pulgada</div><div class="hc-price">₱580</div><div class="hc-foot"><span class="hc-sku">HT-042</span><span class="hc-stk bad">✗ Ubos</span></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="hw-statusbar">
+              <div class="hw-stat">SKU: <strong>248</strong></div>
+              <div class="hw-stat">Mababa: <strong style="color:#f59e0b;">7</strong></div>
+              <div class="hw-stat">Tanong: <strong style="color:#028090;">14</strong></div>
+              <div class="hw-stat">WhatsApp: <strong style="color:#10b981;">Aktibo</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--sub);max-width:440px;line-height:1.4;margin-top:16px;">Full product catalogue, category filtering, WhatsApp integration, inventory alerts</div>
+    </div>
+
+  </div>
+
+  <!-- LAPTOP: Legal CRM -->
+  <div style="display:flex;flex-direction:column;align-items:center;margin-top:40px;" class="fade-in fade-in-delay-3">
+    <div class="tablet-label" style="margin-bottom:16px;">💻 Premium Tier — ₱85,000–275,000</div>
+    <div class="laptop-lid">
+      <div class="laptop-cam-dot"></div>
+      <div class="laptop-screen">
+        <div class="legal-ui">
+          <div class="legal-topbar">
+            <div class="lt-dots">
+              <div class="lt-dot" style="background:#ef4444;"></div>
+              <div class="lt-dot" style="background:#f59e0b;"></div>
+              <div class="lt-dot" style="background:#10b981;"></div>
+            </div>
+            <div class="lt-urlbar"><span class="lt-lock">🔒</span> app.techvisionph.com/legal-crm/matters</div>
+            <div class="lt-actions">
+              <div class="lt-btn">⟳</div>
+              <div class="lt-btn">⋯</div>
+            </div>
+          </div>
+          <div class="legal-body">
+            <div class="legal-sidebar">
+              <div class="ls-brand">
+                <div class="ls-brand-name">Legal CRM</div>
+                <div class="ls-brand-sub">Tech Vision PH</div>
+              </div>
+              <div class="ls-section">Main Menu</div>
+              <div class="ls-item active"><span class="ls-ico">📋</span>Mga Kaso<div class="ls-badge">12</div></div>
+              <div class="ls-item"><span class="ls-ico">👥</span>Kliyente</div>
+              <div class="ls-item"><span class="ls-ico">📅</span>Kalendaryo<div class="ls-badge">3</div></div>
+              <div class="ls-item"><span class="ls-ico">📄</span>Dokumento</div>
+              <div class="ls-section">Finance</div>
+              <div class="ls-item"><span class="ls-ico">💰</span>Billing</div>
+              <div class="ls-item"><span class="ls-ico">📊</span>Ulat</div>
+              <div class="ls-bottom">
+                <div class="ls-user">
+                  <div class="ls-uav">NS</div>
+                  <div>
+                    <div class="ls-uname">N. Schot</div>
+                    <div class="ls-urole">Abogado</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="legal-main">
+              <div class="legal-statsbar">
+                <div class="lstb s1"><div class="lstb-num">12</div><div class="lstb-label">Aktibong Kaso</div></div>
+                <div class="lstb s2"><div class="lstb-num">3</div><div class="lstb-label">Urgent Ngayon</div></div>
+                <div class="lstb s3"><div class="lstb-num">₱284K</div><div class="lstb-label">Na-bill YTD</div></div>
+                <div class="lstb s4"><div class="lstb-num">5</div><div class="lstb-label">Pending Docs</div></div>
+              </div>
+              <div class="lm-header">
+                <span class="lm-title-text">Aktibong Kaso</span>
+                <button class="lm-new">+ Bagong Kaso</button>
+              </div>
+              <div class="matter-list">
+                <div class="matter-row urgent">
+                  <div class="mr-av av-red">RR</div>
+                  <div class="mr-body"><div class="mr-name">Reyes v. Santos — Civil Case</div><div class="mr-client">Atty. M. Reyes · RTC Branch 58</div></div>
+                  <div class="mr-right"><span class="mr-status status-urgent">URGENT</span><span class="mr-due">Mar 3</span></div>
+                </div>
+                <div class="matter-row active">
+                  <div class="mr-av av-green">CC</div>
+                  <div class="mr-body"><div class="mr-name">Cruz Corp — Contract Review</div><div class="mr-client">Cruz Holdings Inc. · Corporate</div></div>
+                  <div class="mr-right"><span class="mr-status status-active">AKTIBO</span><span class="mr-due">Mar 10</span></div>
+                </div>
+                <div class="matter-row review">
+                  <div class="mr-av av-amber">ME</div>
+                  <div class="mr-body"><div class="mr-name">Mendoza Estate — Succession</div><div class="mr-client">Mendoza Family · Probate</div></div>
+                  <div class="mr-right"><span class="mr-status status-review">REVIEW</span><span class="mr-due">Mar 15</span></div>
+                </div>
+                <div class="matter-row active">
+                  <div class="mr-av av-blue">TC</div>
+                  <div class="mr-body"><div class="mr-name">Tan Corp — SEC Registration</div><div class="mr-client">Tan Group of Companies</div></div>
+                  <div class="mr-right"><span class="mr-status status-active">AKTIBO</span><span class="mr-due">Mar 22</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="laptop-base"></div>
+    <div style="text-align:center;font-size:12px;color:var(--sub);max-width:520px;line-height:1.4;margin-top:16px;">Legal matter management, client portal, document templates, billing tracking — for law firms &amp; corporate counsel</div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- PAGE 3: Technical Architecture — SPA + PWA -->
+<section class="tech-sec new-dark-sec fade-in">
+<div class="section-inner new-sec-z">
+  <div style="position:absolute;top:-10px;left:-30px;font-size:64px;opacity:.06;pointer-events:none;">🌿</div>
+  <div style="position:absolute;bottom:-10px;right:-30px;font-size:56px;opacity:.06;pointer-events:none;transform:scaleX(-1);">🌴</div>
+  <div class="section-label" style="color:var(--mint);">Technical Architecture</div>
+  <h2 class="section-title" style="color:#fff;"><span style="color:var(--amber);">SPA</span> Fluidity Meets <span style="color:var(--mint2);">PWA</span> Resilience</h2>
+  <p class="section-sub" style="color:rgba(255,255,255,.6);">The Sachet Software Stack bridges any web browser to any mobile device — bypassing the App Store tax and the high-bandwidth barrier. Built for ₱5/day data plans and ₱2,000 Android devices.</p>
+  <div class="tech-bridge">
+    <div class="tech-side tech-spa fade-in fade-in-delay-1">
+      <div class="tech-side-icon">🌐</div>
+      <div class="tech-side-lbl">The Web Browser</div>
+      <div class="tech-side-h"><span style="color:var(--amber);">Fluidity</span><br>Single Page Application</div>
+      <div class="tech-feat"><span class="tf-dot"></span>Instant Load — zero page refreshes</div>
+      <div class="tech-feat"><span class="tf-dot"></span>Runs inside TikTok &amp; Messenger in-app browser</div>
+      <div class="tech-feat"><span class="tf-dot"></span>No App Store submission or 30% tax</div>
+      <div class="tech-feat"><span class="tf-dot"></span>Deploys in 48 hours, not 8 weeks</div>
+    </div>
+    <div class="tech-mid fade-in fade-in-delay-2">
+      <div class="tech-s-badge">S</div>
+      <div class="tech-vline"></div>
+      <div style="font-size:9px;color:rgba(255,255,255,.25);text-align:center;letter-spacing:.3px;max-width:72px;line-height:1.4;">Sachet<br>Stack</div>
+    </div>
+    <div class="tech-side tech-pwa fade-in fade-in-delay-1">
+      <div class="tech-side-icon">📱</div>
+      <div class="tech-side-lbl">The Mobile Device</div>
+      <div class="tech-side-h"><span style="color:var(--mint2);">Resilience</span><br>Progressive Web App</div>
+      <div class="tech-feat"><span class="tf-dot"></span><span style="color:var(--mint2);font-weight:700;">Offline Caching</span> — works without any signal</div>
+      <div class="tech-feat"><span class="tf-dot"></span>Home Screen Install — feels like a native app</div>
+      <div class="tech-feat"><span class="tf-dot"></span>Survives ₱5/day data plan interruptions</div>
+      <div class="tech-feat"><span class="tf-dot"></span>Push notifications without App Store</div>
+    </div>
+  </div>
+  <div class="tech-tagline fade-in fade-in-delay-3">
+    <p>Why it matters: <span class="th">Bypassing the App Store tax</span> and the high-bandwidth barrier — delivering enterprise-grade tools to MSMEs on <span class="th">₱5/day data plans</span>.</p>
+    <p class="tn">Built for Philippine reality: <span>intermittent connectivity · low-spec hardware · GCash-first payments · barangay-level distribution</span></p>
+  </div>
+</div>
+</section>
+
+<!-- TIERS -->
+<section class="tiers-sec">
+<div class="section-inner">
+  <div class="section-label">Pricing Architecture</div>
+  <h2 class="section-title">Three Tiers. Every MSME Served.</h2>
+  <p class="section-sub">From a sari-sari store at ₱12,000 to a law firm at ₱275,000 — one product line covers the entire Philippine MSME spectrum.</p>
+  <div class="tier-grid">
+    <div class="tier-card fade-in">
+      <div class="tier-badge">Sachet Tier</div>
+      <div class="tier-name">Basic SPA</div>
+      <div class="tier-price"><sup>₱</sup>12,000</div>
+      <div class="tier-time">⚡ Delivered in 48 hours</div>
+      <ul class="tier-features">
+        <li class="tier-feature">Up to 50 products in catalogue</li>
+        <li class="tier-feature">WhatsApp & Google Maps integration</li>
+        <li class="tier-feature">QR code + SEO-ready</li>
+        <li class="tier-feature">Mobile responsive, offline-first</li>
+        <li class="tier-feature">Optional ₱2,500/mo maintenance</li>
+      </ul>
+    </div>
+    <div class="tier-card featured fade-in fade-in-delay-1">
+      <div class="tier-badge">⭐ Best Seller</div>
+      <div class="tier-name">Growth SPA</div>
+      <div class="tier-price"><sup>₱</sup>28,000</div>
+      <div class="tier-time">📅 Delivered in 1 week</div>
+      <ul class="tier-features">
+        <li class="tier-feature">Up to 200 products, multi-location</li>
+        <li class="tier-feature">Advanced filtering + custom branding</li>
+        <li class="tier-feature">Analytics dashboard built-in</li>
+        <li class="tier-feature">GCash / Maya payment integration</li>
+        <li class="tier-feature">Optional ₱5,000/mo maintenance</li>
+      </ul>
+    </div>
+    <div class="tier-card fade-in fade-in-delay-2">
+      <div class="tier-badge">Premium / Enterprise</div>
+      <div class="tier-name">Full Suite</div>
+      <div class="tier-price"><sup>₱</sup>58K<span style="font-size:18px;font-weight:500;">–275K</span></div>
+      <div class="tier-time">🏗 Delivered in 2 weeks</div>
+      <ul class="tier-features">
+        <li class="tier-feature">Full custom integrations + API access</li>
+        <li class="tier-feature">White-label with Prestige Protocol brand</li>
+        <li class="tier-feature">Advanced reporting & compliance</li>
+        <li class="tier-feature">Legal, clinic, investor relations tools</li>
+        <li class="tier-feature">Dedicated account manager</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- PAGE 4: Pricing Tiers — Market Psyche (UPDATED PRICES) -->
+<section class="psyche-sec fade-in">
+<div class="section-inner">
+  <div class="section-label">Pricing Psychology</div>
+  <h2 class="section-title">The Market Psyche:<br>'Tingi,' 'Diskarte,' &amp; 'Sulit'</h2>
+  <p class="section-sub">Our pricing mirrors the Filipino "Mental Wallet" — each tier maps to an existing spending comfort zone, removing psychological friction at every entry point.</p>
+  <div class="sari-shelf">
+    <div class="shelf-item si-free fade-in fade-in-delay-1">
+      <div class="shelf-emo">🥤</div>
+      <div class="shelf-badge">Lead Magnet</div>
+      <div class="shelf-name">Free Taste</div>
+      <div class="shelf-price">FREE</div>
+      <div class="shelf-desc">Demo SPA — client experiences the product before committing</div>
+      <div class="shelf-pill">Trust Builder</div>
+    </div>
+    <div class="shelf-item si-load fade-in fade-in-delay-2">
+      <div class="shelf-emo">💳</div>
+      <div class="shelf-badge">The Load Tier</div>
+      <div class="shelf-name">Micro-Tools</div>
+      <div class="shelf-price">₱299 – ₱1,499</div>
+      <div class="shelf-desc">Calculators, digital menus, price lists — immediate impulse buy</div>
+      <div class="shelf-pill">Impulse Buy</div>
+    </div>
+    <div class="shelf-item si-meal fade-in fade-in-delay-3">
+      <div class="shelf-emo">🍔</div>
+      <div class="shelf-badge">The Meal Tier</div>
+      <div class="shelf-name">Sachet &amp; Growth</div>
+      <div class="shelf-price" style="font-size:14px;">₱12,000 – ₱28,000</div>
+      <div class="shelf-desc">Full SPA/PWA: inventory, catalogue, CRM, WhatsApp</div>
+      <div class="shelf-pill">Immediate Utility</div>
+    </div>
+    <div class="shelf-item si-asset fade-in fade-in-delay-4">
+      <div class="shelf-emo">🛍️</div>
+      <div class="shelf-badge">The Asset Tier</div>
+      <div class="shelf-name">Premium Suite</div>
+      <div class="shelf-price" style="font-size:14px;">₱35,000 – ₱58,000+</div>
+      <div class="shelf-desc">Custom platforms: legal, clinic, enterprise, multi-location</div>
+      <div class="shelf-pill">High-Value Investment</div>
+    </div>
+  </div>
+  <div class="psyche-insight">
+    <div class="pi-icon">💡</div>
+    <div class="pi-text">
+      <strong>Insight:</strong> The Sachet Economy isn't just about small sizes — it's about <strong>matching cash flow</strong>. Low upfront cost beats long-term savings every time in the Filipino market. Our tiered model lets every MSME start where they're comfortable and grow with us.
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- COMPETITOR PRICING -->
+<section class="comp-sec" id="market">
+<div class="section-inner">
+  <div class="section-label">Field-Validated Market Research</div>
+  <h2 class="section-title">The "Goldilocks Zone" —<br>Best Value in Metro Manila</h2>
+  <p class="section-sub">Direct pricing research across Metro Manila agencies confirms our strategic position: 50–85% cheaper than mid-tier agencies, with 48-hour delivery vs their 4–12 week timelines.</p>
+  <div class="price-table-wrap">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Basic</th>
+          <th>Mid-Range</th>
+          <th>Enterprise</th>
+          <th>Maintenance</th>
+          <th>Delivery</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>iBuild.PH</strong></td>
+          <td>₱800/mo*</td>
+          <td>₱1,000/mo*</td>
+          <td>₱1,800/mo*</td>
+          <td>Included</td>
+          <td>Varies</td>
+        </tr>
+        <tr>
+          <td><strong>Cebu Web Concepts</strong></td>
+          <td>₱12,500–17,500</td>
+          <td>₱19,500–47,000</td>
+          <td>₱26,000–95,000</td>
+          <td>Not included</td>
+          <td>4–8 weeks</td>
+        </tr>
+        <tr>
+          <td><strong>NetizenWorks</strong></td>
+          <td>₱14,370</td>
+          <td>₱32,420</td>
+          <td>₱58,940+</td>
+          <td>₱980–3,600/mo</td>
+          <td>4–8 weeks</td>
+        </tr>
+        <tr>
+          <td><strong>Praferosa</strong></td>
+          <td>₱15,000–35,000</td>
+          <td>₱30,000–80,000</td>
+          <td>₱100,000–200,000</td>
+          <td>₱2,000–25,000/mo</td>
+          <td>6–10 weeks</td>
+        </tr>
+        <tr>
+          <td><strong>OOM.com.ph</strong></td>
+          <td>₱30,000–100,000</td>
+          <td>Custom</td>
+          <td>₱40,000–150,000+</td>
+          <td>Separate quote</td>
+          <td>8–12 weeks</td>
+        </tr>
+        <tr>
+          <td><strong>Truelogic</strong></td>
+          <td>₱100,000–240,000</td>
+          <td>₱250,000–2,000,000</td>
+          <td>₱500,000–3,000,000</td>
+          <td>₱5,000–50,000/mo</td>
+          <td>8–16 weeks</td>
+        </tr>
+        <tr class="ours">
+          <td>⭐ <strong>Tech Vision PH</strong></td>
+          <td><strong>₱12,000</strong></td>
+          <td><strong>₱28,000</strong></td>
+          <td><strong>₱58,000–275,000</strong></td>
+          <td><strong>₱2,500–7,500/mo</strong></td>
+          <td><strong>48 hrs – 2 weeks</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:#aaa;margin-top:8px;">*iBuild.PH: mandatory subscription — clients pay ₱9,600–21,600/year with no option to own. Tech Vision PH clients pay once and own forever.</p>
+  <div class="goldilocks">
+    <div class="gz-item">
+      <div class="gz-icon">💸</div>
+      <div class="gz-title">Not the Cheapest</div>
+      <div class="gz-desc">iBuild.PH's ₱800/month looks cheaper upfront but locks MSMEs into perpetual subscription with no ownership. We give them an asset, not a liability.</div>
+    </div>
+    <div class="gz-item center-item">
+      <div class="gz-icon">🎯</div>
+      <div class="gz-title">The Sweet Spot</div>
+      <div class="gz-desc">Competitive pricing vs. mid-tier agencies — but with 48-hour delivery, full IP ownership, no scope creep, and Tagalog-speaking agents at the door.</div>
+    </div>
+    <div class="gz-item">
+      <div class="gz-icon">🏢</div>
+      <div class="gz-title">Not the Most Expensive</div>
+      <div class="gz-desc">Premium agencies charge ₱100K–₱3M. We deliver comparable functionality 40–94% cheaper — making quality digital tools accessible to the 99.5%.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- PAGE 5: Trust Ladder GTM Strategy (UPDATED TIMELINE) -->
+<section class="ladder-sec new-dark-sec fade-in">
+<div class="section-inner new-sec-z">
+  <div style="position:absolute;top:-10px;right:-20px;font-size:68px;opacity:.06;pointer-events:none;">🌺</div>
+  <div style="position:absolute;bottom:-10px;left:-30px;font-size:56px;opacity:.06;pointer-events:none;">🌿</div>
+  <div class="section-label" style="color:var(--amber);">Go-to-Market Strategy</div>
+  <h2 class="section-title" style="color:#fff;">The <span style="color:var(--amber);">Trust Ladder</span> Strategy</h2>
+  <p class="section-sub" style="color:rgba(255,255,255,.6);">A 90-day sequence built for Philippine market skepticism — start with proof, earn trust, then close the platform commitment. <em style="color:rgba(255,255,255,.4);">Tiwala</em> is earned in stages, not demanded upfront.</p>
+  <div class="ladder-layout">
+    <div class="ladder-steps">
+      <div class="ladder-step lss1 fade-in fade-in-delay-1">
+        <div class="ls-connector" style="background:linear-gradient(180deg,var(--mint),var(--amber));"></div>
+        <div class="ls-num lsn1">1</div>
+        <div class="ls-body">
+          <div class="ls-timeline">📅 Days 1 – 30</div>
+          <div class="ls-name">Living Artifact</div>
+          <div class="ls-price">₱299 – ₱1,499</div>
+          <div class="ls-desc">Low Trust Required. "Pa-sample" approach — prove the product works before asking for commitment. Solves Inquiry Fatigue immediately.</div>
+        </div>
+      </div>
+      <div class="ladder-step lss2 fade-in fade-in-delay-2">
+        <div class="ls-connector" style="background:linear-gradient(180deg,var(--amber),var(--teal2));"></div>
+        <div class="ls-num lsn2">2</div>
+        <div class="ls-body">
+          <div class="ls-timeline">📅 Days 31 – 60</div>
+          <div class="ls-name">Living Asset</div>
+          <div class="ls-price">₱12,000 – ₱28,000</div>
+          <div class="ls-desc">"Version Evolution" Model — client upgrades to full Sachet/Growth SPA after experiencing measurable results from Step 1.</div>
+        </div>
+      </div>
+      <div class="ladder-step lss3 fade-in fade-in-delay-3">
+        <div class="ls-num lsn3">3</div>
+        <div class="ls-body">
+          <div class="ls-timeline">🎯 Days 61 – 90</div>
+          <div class="ls-name">PWA Platform</div>
+          <div class="ls-price">Agent First Close</div>
+          <div class="ls-desc">Recurring Revenue — client becomes a long-term platform partner with maintenance subscription, upsell pipeline, and referral potential.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ladder-note-box fade-in fade-in-delay-2">
+      <div class="lnb-title">🎯 Strategy Note</div>
+      <div class="lnb-text">
+        Start with the <strong>"Pa-sample"</strong> (Lead Magnet) to overcome the high skepticism of the Philippine market.<br><br>
+        <em style="color:rgba(255,255,255,.5);">Tiwala</em> is earned in stages — never demanded upfront. This is how Filipino business culture works, and our ladder is built to respect that reality.
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FINANCIALS -->
+<section class="fin-sec" id="financials">
+<div class="section-inner">
+  <div class="section-label">Financial Projections</div>
+  <h2 class="section-title">Three Scenarios. All Profitable.</h2>
+  <p class="section-sub">Built from documented assumptions — sales cycle data, agent ramp models, and product mix. Not guesswork.</p>
+  <div class="fin-grid">
+    <div class="scenario-cards fade-in">
+      <div class="sc-card sc1">
+        <div class="sc-title">Scenario 1 — Validation · Founder Only</div>
+        <div class="sc-rev">₱1.62M Revenue</div>
+        <div class="sc-details">
+          <div class="sc-det"><strong>₱68K</strong> net profit</div>
+          <div class="sc-det"><strong>4.2%</strong> margin</div>
+          <div class="sc-det"><strong>90</strong> clients</div>
+          <div class="sc-det"><strong>3.3×</strong> return</div>
+        </div>
+      </div>
+      <div class="sc-card sc2">
+        <div class="sc-title">⭐ Scenario 2 — Base Case · 4 Agents Month 8</div>
+        <div class="sc-rev">₱5.2M Revenue</div>
+        <div class="sc-details">
+          <div class="sc-det"><strong>₱1.78M</strong> net profit</div>
+          <div class="sc-det"><strong>34.1%</strong> margin</div>
+          <div class="sc-det"><strong>304</strong> clients</div>
+          <div class="sc-det"><strong>12.5×</strong> return</div>
+        </div>
+      </div>
+      <div class="sc-card sc3">
+        <div class="sc-title">Scenario 3 — Optimistic · 6 Agents + Legal Accel.</div>
+        <div class="sc-rev">₱8.16M Revenue</div>
+        <div class="sc-details">
+          <div class="sc-det"><strong>₱2.66M</strong> net profit</div>
+          <div class="sc-det"><strong>32.6%</strong> margin</div>
+          <div class="sc-det"><strong>480</strong> clients</div>
+          <div class="sc-det"><strong>18.8×</strong> return</div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-box">
+      <h4>3-Year Revenue Projection — Base Case (₱M)</h4>
+      <div class="chart-canvas-wrap"><canvas id="revenueChart"></canvas></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- MOATS -->
+<section class="moats-sec">
+<div class="section-inner">
+  <div class="section-label">Competitive Moats</div>
+  <h2 class="section-title">Six Reasons This Is<br>Defensible</h2>
+  <p class="section-sub">Each moat compounds the others. By client 100, we know exact win rates, district-by-district. No one can replicate that data overnight.</p>
+  <div class="moats-grid">
+    <div class="moat-card fade-in"><div class="moat-icon">🏃</div><div class="moat-title">Feet on the Street</div><div class="moat-desc">Commission-only agents in every barangay. No website, no SEO, no ad spend — we walk in and close. Global SaaS cannot replicate Filipino-trust distribution.</div></div>
+    <div class="moat-card fade-in fade-in-delay-1"><div class="moat-icon">💰</div><div class="moat-title">Sachet Pricing Lock</div><div class="moat-desc">₱12,000 entry point eliminates the price barrier entirely. Volume engine enables rapid client acquisition and referral flywheel from Day 1.</div></div>
+    <div class="moat-card fade-in fade-in-delay-2"><div class="moat-icon">🔗</div><div class="moat-title">Ecosystem Lock-in</div><div class="moat-desc">Sachet clients graduate to Growth. Growth clients upsell to Premium. Every tier feeds the next — client lifetime value compounds across the stack.</div></div>
+    <div class="moat-card fade-in fade-in-delay-1"><div class="moat-icon">⚖️</div><div class="moat-title">Legal-Tech Wedge</div><div class="moat-desc">No competitor addresses legal-tech below ₱500K. One Premium legal client = 80 Sachet clients in gross profit. High-margin anchor the sector cannot ignore.</div></div>
+    <div class="moat-card fade-in fade-in-delay-2"><div class="moat-icon">🤝</div><div class="moat-title">Trust in the Agent</div><div class="moat-desc">MSMEs buy from people they know. Our agents live in the same communities as clients. This relationship capital is ours — and it cannot be advertised away.</div></div>
+    <div class="moat-card fade-in fade-in-delay-3"><div class="moat-icon">📊</div><div class="moat-title">Proprietary Data</div><div class="moat-desc">Every closed deal trains the playbook. By client 100, we have exact win rates per tier, per district, per agent profile — a proprietary dataset no competitor can buy.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ASK -->
+<section class="ask-sec" id="ask">
+<div class="section-inner">
+  <div class="section-label">The Investment Opportunity</div>
+  <h2 class="section-title">₱600,000 for 15%<br>in a Business That Already Works</h2>
+  <p class="section-sub">80+ products built. Sales strategy proven. Two milestone-gated tranches protect your capital. This is acceleration funding — not survival funding.</p>
+  <div class="ask-grid">
+    <div>
+      <div class="tranche-block fade-in">
+        <div class="tb-num">1</div>
+        <div class="tb-title">₱300,000 at Signing</div>
+        <div class="tb-trigger">Released immediately upon agreement</div>
+        <ul class="tb-items">
+          <li class="tb-item"><span>Legal &amp; compliance (DTI, BIR, GCash, PayMongo)</span><span class="amount">₱25,000</span></li>
+          <li class="tb-item"><span>Agent demo kit (3 sector packages)</span><span class="amount">₱40,000</span></li>
+          <li class="tb-item"><span>Sales materials (tablet, collateral, cards)</span><span class="amount">₱35,000</span></li>
+          <li class="tb-item"><span>Month 1 launch marketing (FB Ads — Makati/BGC)</span><span class="amount">₱50,000</span></li>
+          <li class="tb-item"><span>Working capital — Month 1–2 operations</span><span class="amount">₱100,000</span></li>
+          <li class="tb-item"><span>Product development reserve</span><span class="amount">₱50,000</span></li>
+          <li class="tb-item"><span><strong>TOTAL TRANCHE 1</strong></span><span class="amount">₱300,000</span></li>
+        </ul>
+      </div>
+      <div class="tranche-block fade-in fade-in-delay-1" style="margin-top:20px;">
+        <div class="tb-num" style="background:var(--amber);">2</div>
+        <div class="tb-title">₱300,000 at 1-Month Milestone</div>
+        <div class="tb-trigger">Released when ALL 5 criteria are verified</div>
+        <div class="tb-gate">
+          <div class="tb-gate-title">🔒 Milestone Release Gates</div>
+          <ul class="tb-gate-items">
+            <li class="tb-gate-item">5 paying Philippine clients (GCash/Maya/bank receipt evidence)</li>
+            <li class="tb-gate-item">Sales script written, tested, and documented</li>
+            <li class="tb-gate-item">Revenue collected ≥ ₱50,000 (verified by bank statement)</li>
+            <li class="tb-gate-item">3+ agent candidates identified and screened</li>
+            <li class="tb-gate-item">Website live with self-serve Tier 1 products available</li>
+          </ul>
+        </div>
+        <p style="font-size:12px;color:var(--sub);margin-top:12px;line-height:1.5;">Tranche 2 funds agent recruitment, expanded marketing, product customisation, and initial regional outreach (Cebu / Davao).</p>
+      </div>
+    </div>
+    <div>
+      <div class="ask-returns fade-in fade-in-delay-2">
+        <h3>Investor Returns Framework</h3>
+        <table class="returns-table">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Yr 3 Revenue</th>
+              <th>15% Stake</th>
+              <th>Return on ₱600K</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Conservative</td><td>₱10.2M</td><td>₱4.59M</td><td class="return-x">7.7×</td></tr>
+            <tr><td>Base Case</td><td>₱16.6M</td><td>₱7.47M</td><td class="return-x">12.5×</td></tr>
+            <tr><td>Optimistic</td><td>₱25.0M</td><td>₱11.25M</td><td class="return-x">18.8×</td></tr>
+            <tr><td>Series A Exit (Yr 2)</td><td>₱12.3M run rate</td><td>₱4.5M–₱12M</td><td class="return-x">7.5×–20×</td></tr>
+          </tbody>
+        </table>
+        <div class="ask-terms">
+          <div class="term-item"><div class="term-label">Investment</div><div class="term-value">₱600,000</div></div>
+          <div class="term-item"><div class="term-label">Equity Offered</div><div class="term-value">15%</div></div>
+          <div class="term-item"><div class="term-label">Pre-Money Valuation</div><div class="term-value">₱3,400,000</div></div>
+          <div class="term-item"><div class="term-label">Post-Money Valuation</div><div class="term-value">₱4,000,000</div></div>
+          <div class="term-item"><div class="term-label">Stage</div><div class="term-value">Pre-Revenue, Post-Product</div></div>
+          <div class="term-item"><div class="term-label">Structure</div><div class="term-value">2 Milestone-Gated Tranches</div></div>
+        </div>
+        <div style="margin-top:20px;padding:16px;background:linear-gradient(135deg,rgba(0,180,204,.08),rgba(1,52,64,.04));border-radius:12px;border:1px solid rgba(0,180,204,.2);">
+          <p style="font-size:13px;color:var(--teal);line-height:1.6;"><strong>Investor Rights:</strong> Monthly financial reporting · Advisory access · Right of first refusal on Series A · Early entry at ₱3.4M pre-money — before verified Philippine revenue, proven agent network, and institutional attention at Series A.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder-sec">
+<div class="section-inner">
+  <div class="section-label">The Founder</div>
+  <h2 class="section-title">Built by Someone Who Lives<br>the Philippine Market</h2>
+  <div class="founder-grid">
+    <div class="founder-avatar fade-in">🇵🇭</div>
+    <div class="fade-in fade-in-delay-1">
+      <div class="founder-name">Nico Schot</div>
+      <div class="founder-title">Founder & CEO · Tech Vision PH</div>
+      <p class="founder-bio">A Dutch-Filipino entrepreneur based in Makati City, Nico built the entire 80+ product portfolio himself before seeking investment. His dual cultural perspective — European product-building discipline combined with deep personal knowledge of Filipino business culture, tiwala, and MSME cash-flow realities — gives Tech Vision PH an execution advantage no agency can replicate from behind a desk.</p>
+      <div class="creds-grid">
+        <div class="cred-item"><div class="cred-icon">🏗</div><div class="cred-title">80+ Products Built</div><div class="cred-desc">Production-ready SPAs across 14+ sectors — all built and tested before investment sought</div></div>
+        <div class="cred-item"><div class="cred-icon">📍</div><div class="cred-title">Deep Local Roots</div><div class="cred-desc">Based in Makati, operating in the same business districts as target clients</div></div>
+        <div class="cred-item"><div class="cred-icon">⚡</div><div class="cred-title">Technical Founder</div><div class="cred-desc">React, Next.js, SPA/PWA architecture — no external dev dependency, fast product iteration</div></div>
+        <div class="cred-item"><div class="cred-icon">🤝</div><div class="cred-title">Cultural Fluency</div><div class="cred-desc">Navigates tiwala, personal relationships, and Filipino business rhythms — critical for MSME sales</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- PAGE 15: Closing Mission Statement -->
+<section class="mission-sec new-dark-sec fade-in">
+<div class="section-inner new-sec-z">
+  <div style="position:absolute;top:-10px;left:-30px;font-size:76px;opacity:.05;pointer-events:none;">🌴</div>
+  <div style="position:absolute;top:-10px;right:-30px;font-size:76px;opacity:.05;pointer-events:none;transform:scaleX(-1);">🌴</div>
+  <div style="position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);font-size:56px;opacity:.05;pointer-events:none;">🌺</div>
+  <div class="mission-inner">
+    <div class="mission-emojis fade-in">🇵🇭 📱 🌟 💼 🛒</div>
+    <div class="section-label" style="color:var(--amber);text-align:center;font-size:11px;letter-spacing:1.5px;">The Mission</div>
+    <h2 class="mission-h fade-in fade-in-delay-1">
+      The Future: <span>Empowering</span><br>the Heritage of Smallness
+    </h2>
+    <div class="mission-divider"></div>
+    <p class="mission-quote fade-in fade-in-delay-2">
+      The future isn't replacing the small trader.<br>
+      It's <strong>arming them with the power of the cloud.</strong>
+    </p>
+    <div class="mission-pill fade-in fade-in-delay-3">
+      Build for the Moment of Utility. 🚀
+    </div>
+    <div class="mission-stats fade-in fade-in-delay-4">
+      <div class="mstat">
+        <div class="mstat-num">1M+</div>
+        <div class="mstat-lbl">MSMEs Addressable</div>
+      </div>
+      <div class="mstat">
+        <div class="mstat-num">99.59%</div>
+        <div class="mstat-lbl">of All PH Businesses</div>
+      </div>
+      <div class="mstat">
+        <div class="mstat-num">54%</div>
+        <div class="mstat-lbl">Have No Digital Presence</div>
+      </div>
+      <div class="mstat">
+        <div class="mstat-num">Now</div>
+        <div class="mstat-lbl">Is the Right Time</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- CTA FOOTER -->
+<div class="cta-footer" id="contact">
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin-bottom:16px;">Ready to Invest?</div>
+    <h2>Let's Build the Future<br>of Philippine MSMEs</h2>
+    <p>₱600,000 · 15% equity · 2 milestone-gated tranches<br>One conversation to get started.</p>
+    <a href="mailto:contact@techvisionph.com" class="btn-primary" style="display:inline-block;margin-top:16px;">📧 Contact Nico →</a>
+    <div class="cta-contact">
+      <div class="cta-contact-item"><span class="ci-icon">📧</span><strong>contact@techvisionph.com</strong></div>
+      <div class="cta-contact-item"><span class="ci-icon">📍</span><strong>Makati City, Metro Manila</strong></div>
+      <div class="cta-contact-item"><span class="ci-icon">📅</span><strong>February 2026</strong></div>
+    </div>
+  </div>
+</div>
+<div class="confidential-bar">
+  Nico Schot · Founder & CEO · Tech Vision PH &nbsp;|&nbsp; Confidential — For Authorised Recipients Only &nbsp;|&nbsp; February 2026
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ── CHART ──
+  var ctx = document.getElementById('revenueChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Year 1', 'Year 2', 'Year 3'],
+      datasets: [
+        {label:'Revenue (₱M)',data:[5.2,15.0,28.5],backgroundColor:['rgba(0,180,204,.7)','rgba(0,180,204,.85)','rgba(0,180,204,1)'],borderRadius:6,borderSkipped:false},
+        {label:'Net Profit (₱M)',data:[1.78,7.8,16.2],backgroundColor:['rgba(245,166,35,.7)','rgba(245,166,35,.85)','rgba(245,166,35,1)'],borderRadius:6,borderSkipped:false}
+      ]
+    },
+    options: {
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{
+        legend:{labels:{color:'rgba(255,255,255,.6)',font:{size:11}}},
+        tooltip:{backgroundColor:'rgba(1,32,40,.9)',titleColor:'#fff',bodyColor:'rgba(255,255,255,.75)'}
+      },
+      scales:{
+        x:{ticks:{color:'rgba(255,255,255,.5)',font:{size:11}},grid:{color:'rgba(255,255,255,.05)'}},
+        y:{ticks:{color:'rgba(255,255,255,.5)',font:{size:11},callback:function(v){return '₱'+v+'M';}},grid:{color:'rgba(255,255,255,.07)'}}
+      }
+    }
+  });
+
+  // ── SCROLL FADE-IN (low threshold so deep sections always trigger) ──
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.05, rootMargin: '0px 0px -40px 0px'});
+
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // ── FALLBACK: reveal any stuck fade-in elements after 2.5s ──
+  setTimeout(function() {
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }, 2500);
+
+});
+</script>
+</body>
+</html>
